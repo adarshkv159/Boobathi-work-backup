@@ -1,0 +1,14 @@
+python3 main-scrfd-v2.py capture_dataset --name prasath --dataset dataset --cam 0
+
+python3 main-scrfd-v2.py build_db --dataset dataset --db database.npy
+
+
+python3 main-scrfd-v2.py recognize --db database.npy --threshold 0.55
+
+
+
+npu:
+
+
+
+python3 main-scrfd-v2.py  --rec_delegate /usr/lib/libvx_delegate.so recognize --db database.npy --threshold 0.55

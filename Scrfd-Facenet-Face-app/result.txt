@@ -1,0 +1,5 @@
+recognition problem :
+facenet model can't recognize face which in longer range , because of it's only can recognize the image 112x112 resolution. 
+
+SCRFD face dtection model resolution:
+SCRFD model have input shape of 640x480 , properly work on the webcam . but with higher resolution camera it work but the range of detection will reduce.

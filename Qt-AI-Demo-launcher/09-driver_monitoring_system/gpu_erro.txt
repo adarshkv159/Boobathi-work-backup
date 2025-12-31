@@ -1,0 +1,11 @@
+ERROR: Failed to compile vx shader. (error: FFFFFFED)
+E [_gpu_register:477]Build program fail.
+E [vsi_nn_kernel_create_node:632]Register client kernel com.vivantecorp.extension.cl.prelu_U8U8toU8 fail with -1.
+
+ERROR: Failed to compile vx shader. (error: FFFFFFED)
+E [_gpu_register:477]Build program fail.
+E [vsi_nn_kernel_create_node:632]Register client kernel com.vivantecorp.extension.evis.prelu_U8U8toU8_2D fail with -1.
+
+ERROR: Failed to compile vx shader. (error: FFFFFFED)
+E [_gpu_register:477]Build program fail.
+E [vsi_nn_kernel_create_node:632]Register client kernel com.vivantecorp.extension.cl.prelu_U8U8toU8 fail with -1.

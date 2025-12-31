@@ -1,0 +1,15 @@
+tokenizers
+av
+tensorflow
+
+# Core requirements
+numpy==1.23.5
+PyAudio==0.2.13
+
+# TensorFlow Lite options (choose one)
+tflite-runtime==2.14.0  # Lightweight TFLite interpreter (recommended)
+# tensorflow==2.14.0    # Full TensorFlow package (alternative)
+
+# Additional audio processing (if needed)
+librosa==0.10.0         # For advanced audio features
+soundfile==0.12.1       # For additional audio file support

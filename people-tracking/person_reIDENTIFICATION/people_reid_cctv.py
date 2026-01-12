@@ -12,9 +12,9 @@ import numpy as np
 import tensorflow as tf
 from norfair import Detection, Tracker
 
-# =========================================================
+
 # RTSP LOW LATENCY
-# =========================================================
+
 os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = (
     "rtsp_transport;tcp|"
     "fflags;nobuffer|"
@@ -29,9 +29,7 @@ RTSP_URL = (
     "cam/realmonitor?channel=1&subtype=1"
 )
 
-# =========================================================
-# CONFIG
-# =========================================================
+
 DET_SCORE_TH = 0.5
 REID_SIM_TH = 0.7
 REID_INPUT_SIZE = (256, 128)
@@ -41,25 +39,19 @@ DATASET_DIR = "dataset"
 
 os.makedirs(DATASET_DIR, exist_ok=True)
 
-# =========================================================
-# STATE
-# =========================================================
+
 reid_db = {}            # pid -> np.ndarray [N, D]
 trackid_to_pid = {}
 next_person_id = 0
 last_reid_time = 0.0
 
 
-# =========================================================
-# UTILS
-# =========================================================
+
 def cosine(a, b):
     return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
 
 
-# =========================================================
-# REID DATABASE (DISK + RAM)
-# =========================================================
+
 def load_pid_embeddings(pid):
     path = os.path.join(DATASET_DIR, f"person_{pid}", "embeddings.npy")
     if os.path.exists(path):
@@ -122,9 +114,7 @@ def update_pid(pid, emb, person_img):
     )
 
 
-# =========================================================
-# TFLITE
-# =========================================================
+
 def load_tflite(path):
     i = tf.lite.Interpreter(model_path=path)
     i.allocate_tensors()
@@ -142,9 +132,7 @@ def extract_embedding(i, img):
     return e / np.linalg.norm(e)
 
 
-# =========================================================
-# DETECTION
-# =========================================================
+
 def preprocess_det(frame, shape, dtype):
     h, w = shape[1], shape[2]
     img = cv2.resize(frame, (w, h))
@@ -153,9 +141,7 @@ def preprocess_det(frame, shape, dtype):
     return np.expand_dims(img, 0)
 
 
-# =========================================================
-# MAIN
-# =========================================================
+
 def main():
     global last_reid_time
 

@@ -15,25 +15,18 @@ import numpy as np
 import tensorflow as tf
 from norfair import Detection, Tracker
 
-# ==========================
-# CONFIG
-# ==========================
+
 DET_SCORE_TH = 0.5
 REID_SIM_TH = 0.7
 REID_INPUT_SIZE = (256, 128)  # H, W
 REID_INTERVAL = 5             # run re-id every N frames
 
-# ==========================
-# REID DATABASE
-# ==========================
+
 reid_db = {}         # person_id -> embedding
 next_person_id = 0
 trackid_to_pid = {} # tracker_id -> person_id
 
 
-# ==========================
-# UTILS
-# ==========================
 def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
@@ -65,9 +58,7 @@ def crop_person(frame, bbox):
     return frame[y1:y2, x1:x2]
 
 
-# ==========================
-# TFLITE HELPERS
-# ==========================
+
 def load_tflite_model(path):
     interpreter = tf.lite.Interpreter(model_path=path)
     interpreter.allocate_tensors()
@@ -87,9 +78,7 @@ def tflite_infer(interpreter, image):
     return outputs
 
 
-# ==========================
-# PERSON DETECTION
-# ==========================
+
 def preprocess_det(frame, input_shape, dtype):
     h, w = input_shape[1], input_shape[2]
     img = cv2.resize(frame, (w, h))
@@ -126,9 +115,7 @@ def parse_detections(outputs, frame_shape):
     return dets
 
 
-# ==========================
-# REID INFERENCE
-# ==========================
+
 def extract_embedding(interpreter, person_img):
     img = cv2.resize(person_img, (REID_INPUT_SIZE[1], REID_INPUT_SIZE[0]))
     img = img.astype(np.float32)
@@ -144,9 +131,6 @@ def extract_embedding(interpreter, person_img):
     return emb / np.linalg.norm(emb)
 
 
-# ==========================
-# MAIN
-# ==========================
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--det_model", required=True, help="TFLite detection model")

@@ -1,0 +1,18 @@
+setup:
+
+nmcli connection show
+
+nmcli connection modify "Profile 1" \
+ipv4.method manual \
+ipv4.addresses 192.168.2.10/24 \
+ipv4.gateway "" \
+ipv4.dns "" \
+ipv6.method ignore
+
+nmcli connection down "Profile 1"
+nmcli connection up "Profile 1"
+
+
+run command :
+
+python3 people_tracker_cctv.py   --model ssdlite_mobiledet_dsp_320x320_coco_20200519.tflite   --threshold 0.4   --show_fps

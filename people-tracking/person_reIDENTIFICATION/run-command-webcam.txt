@@ -1,0 +1,1 @@
+python3 people_reid_dataset-webcam.py --det_model ssdlite_mobiledet_dsp_320x320_coco_20200519.tflite --reid_model model_float16_quant.tflite --source 0

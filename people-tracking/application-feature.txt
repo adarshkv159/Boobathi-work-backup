@@ -1,0 +1,13 @@
+| **Area**          | **Key Feature**              | **What it Does**                                  |
+| ----------------- | ---------------------------- | ------------------------------------------------- |
+| **Input**         | RTSP IP Camera (Low Latency) | Real-time video from IP camera with minimal delay |
+| **Detection**     | Person Detection (TFLite)    | Detects only people using AI model                |
+| **Tracking**      | Multi-Person ID Tracking     | Assigns stable IDs to each person                 |
+| **Analytics**     | Dwell Time Measurement       | Calculates how long a person stays                |
+| **Behaviour**     | Idle / Moving Detection      | Identifies stationary vs moving persons           |
+| **Heatmap**       | Live Heatmap with Auto-Fade  | Shows recent movement, removes old paths          |
+| **Visualization** | Real-Time Overlay            | Bounding boxes, IDs, states on video              |
+| **UI**            | Side Info Panel              | Live display of ID, state, dwell time             |
+| **Performance**   | Real-Time Processing         | Near real-time performance on CPU                 |
+| **Stability**     | Long-Run Safe                | Runs continuously without memory issues           |
+

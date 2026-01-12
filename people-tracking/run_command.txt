@@ -1,2 +1,0 @@
-
-python3 people_tracker_tflite.py   --model ssdlite_mobiledet_dsp_320x320_coco_20200519.tflite   --threshold 0.7   --show_fps
